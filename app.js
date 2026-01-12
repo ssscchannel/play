@@ -617,8 +617,37 @@ const APP = {
             targetBank = parts[1];
             const bank = APP_DATA.banks.find(b => b.id === targetBank);
             const bankTitle = bank ? bank.title : targetBank;
-            const modeTitle = targetMode === 'standard' ? '標準競速' : '生存模式';
-            title.innerText = `${modeTitle} - ${bankTitle}`;
+			
+            // 1. 處理模式 ICON
+            let modeIcon = "⏱️"; // 預設標準
+            if (targetMode === 'survival') modeIcon = "❤️";
+
+            // 2. 處理年級 ICON 與單元名稱
+            let finalTitle = bankTitle;
+            if (bankTitle.includes('-')) {
+                const titleParts = bankTitle.split('-'); // ["3年級", "種菜"]
+                const gradePart = titleParts[0];         // "3年級"
+                const unitName = titleParts[1];          // "種菜"
+
+                // 嘗試提取數字
+                const numStr = gradePart.replace(/[^0-9]/g, ''); // 抓出 "3"
+                
+                // 數字轉 ICON 對照表 (可視需求擴充)
+                const numIcons = {
+                    "1": "1️⃣", "2": "2️⃣", "3": "3️⃣", 
+                    "4": "4️⃣", "5": "5️⃣", "6": "6️⃣", 
+                    "7": "7️⃣", "8": "8️⃣", "9": "9️⃣"
+                };
+                
+                // 如果有對應的 ICON 就用，沒有就維持原字(例如"國一")
+                const gradeIcon = numIcons[numStr] || gradePart; 
+                
+                finalTitle = `${gradeIcon} ${unitName}`;
+            }
+
+            // 3. 組合最終標題
+            title.innerText = `${modeIcon} ${finalTitle}`;
+			
         } else {
             title.innerText = "所有歷史紀錄";
         }
