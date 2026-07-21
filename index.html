@@ -23,8 +23,8 @@
         <div id="screen-lobby" class="screen active">
             <div class="header-section">
                 <div class="brand-row" onclick="APP.triggerAdmin()">
-                    <img src="logo.jpg" class="logo-img" alt="Logo">
-                    <span class="system-title">晟自然輔助系統</span>
+                    <img src="DP.png" class="logo-img" alt="Logo">
+                    <span class="system-title">晟自然玩科學</span>
                 </div>
                 
                 <div class="title-area">
@@ -76,20 +76,8 @@
                 </div>
 
                 <div class="section-label">選擇題庫</div>
-                    <div class="dropdown-row">
-					    <div class="select-wrapper">
-						<select id="sel-grade" onchange="APP.onGradeChange()">
-						</select>
-						<div class="select-arrow">▼</div>
-					</div>
-					
-					<div class="select-wrapper">
-    					<select id="sel-unit" onchange="APP.onUnitChange()">
-						<option>請先選年級</option>
-						</select>
-						<div class="select-arrow">▼</div>
-					</div>
-				</div>
+                <div class="bank-selector" id="bank-btn-group">
+                    </div>
 
                 <div class="section-label">競賽模式</div>
                 <div class="mode-container">
@@ -103,7 +91,7 @@
                             <span class="m-text">生存挑戰</span>
                         </button>
                     </div>
-                    <!--<div class="mode-row">
+                    <div class="mode-row">
                         <button id="m-f1" class="mode-btn" onclick="APP.selectMode('f1')">
                             <span class="m-emoji">🏎️</span>
                             <span class="m-text">F1 積分賽</span>
@@ -112,7 +100,7 @@
                             <span class="m-emoji">🏆</span>
                             <span class="m-text">錦標賽</span>
                         </button>
-                    </div>-->
+                    </div>
                 </div>
             </div>
 
@@ -332,7 +320,6 @@
 
     </div>
 
-    <script src="data.js"></script>
-	<script src="app.js"></script>
+    <script src="./app.js"></script>
 </body>
 </html>
